@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202191322) do
+ActiveRecord::Schema.define(version: 20160202191641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,31 @@ ActiveRecord::Schema.define(version: 20160202191322) do
     t.string  "campaign_type"
     t.date    "campaign_date"
     t.string  "file_url"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.integer  "city_id"
+    t.integer  "company_id"
+    t.string   "company_name"
+    t.string   "contact_email"
+    t.integer  "country_id"
+    t.boolean  "deleted",        default: false
+    t.string   "first_name"
+    t.string   "int_address"
+    t.string   "int_city"
+    t.string   "int_state"
+    t.string   "int_zipcode"
+    t.string   "last_name"
+    t.string   "phone"
+    t.integer  "quickbooks_id"
+    t.integer  "state_id"
+    t.string   "street_address"
+    t.float    "tax"
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "zipcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "companies", force: :cascade do |t|
