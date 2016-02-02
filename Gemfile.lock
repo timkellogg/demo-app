@@ -75,6 +75,13 @@ GEM
     dalli (2.7.5)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    devise (3.5.6)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     email_spec (2.0.0)
@@ -122,6 +129,7 @@ GEM
     orderly (0.0.3)
       capybara (>= 1.1)
       rspec (>= 2.14)
+    orm_adapter (0.5.0)
     pg (0.18.4)
     poltergeist (1.8.1)
       capybara (~> 2.1)
@@ -172,6 +180,8 @@ GEM
     rake (10.5.0)
     rdoc (4.2.1)
       json (~> 1.4)
+    responders (2.1.1)
+      railties (>= 4.2.0, < 5.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -227,6 +237,8 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.6)
+      rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -253,6 +265,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   dalli
   database_cleaner
+  devise
   email_spec
   factory_girl_rails
   faker
