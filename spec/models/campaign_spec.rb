@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Campaign, focus: true do 
+describe Campaign do 
   context 'relationships' do  
     it { should belong_to :company }
   end
