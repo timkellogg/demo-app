@@ -586,20 +586,43 @@
         1,
         null,
         1,
+        1,
         2,
+        null,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
         null
       ],
       "/Users/tkellogg/Desktop/jetbuilt/demo-app/app/models/campaign.rb": [
         1,
         1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/tkellogg/Desktop/jetbuilt/demo-app/spec/models/client_spec.rb": [
         1,
         null,
         1,
+        1,
         2,
         2,
+        null,
         null
       ],
       "/Users/tkellogg/Desktop/jetbuilt/demo-app/app/models/client.rb": [
@@ -612,9 +635,11 @@
         1,
         null,
         1,
+        1,
         2,
         2,
         2,
+        null,
         null
       ],
       "/Users/tkellogg/Desktop/jetbuilt/demo-app/app/models/company.rb": [
@@ -628,11 +653,13 @@
         1,
         null,
         1,
+        1,
         2,
         2,
+        null,
         null
       ]
     },
-    "timestamp": 1454443654
+    "timestamp": 1454444186
   }
 }
