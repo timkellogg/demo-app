@@ -532,6 +532,7 @@
       "/Users/tkellogg/Desktop/jetbuilt/demo-app/app/models/user.rb": [
         1,
         1,
+        1,
         null,
         1,
         null,
@@ -613,9 +614,11 @@
         1,
         2,
         2,
+        2,
         null
       ],
       "/Users/tkellogg/Desktop/jetbuilt/demo-app/app/models/company.rb": [
+        1,
         1,
         1,
         1,
@@ -626,9 +629,10 @@
         null,
         1,
         2,
+        2,
         null
       ]
     },
-    "timestamp": 1454441489
+    "timestamp": 1454443654
   }
 }
