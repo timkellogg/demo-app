@@ -15,6 +15,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem "font-awesome-rails"
 gem "devise"
+gem "paperclip"
 
 group :production do
   gem 'puma'
