@@ -1,9 +1,14 @@
-class CampaignController < ApplicationController
+require 'closeio'
+
+class CampaignsController < ApplicationController
+  # include Closeapi
   before_action :authenticate_user!
   
-  # Show all campaigns belonging to company
+  # Show all leads
   def index
-    
+    @campaigns = Campaign.all
+      .order(name: :desc)
+      .paginate(:page => params[:page])
   end
   
   # Show individual campaign

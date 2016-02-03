@@ -10,12 +10,18 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
-gem 'bootstrap-sass',       '3.2.0.0'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem "font-awesome-rails"
 gem "devise"
 gem "paperclip"
+gem 'dotenv-rails'
+gem 'cancancan', '~> 1.10'
+
+# Close.io
+gem 'closeio', '~> 2.4'
 
 group :production do
   gem 'puma'

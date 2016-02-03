@@ -1,1 +1,35 @@
-Index
+
+<% if @campaigns %>
+<h3>Sales Leads</h3>
+  <button id="unique_businesses" class="btn btn-info">unique businesses</button>
+  <button id="unique_employees" class="btn btn-info">uniques employees</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Number:</th>
+        <th>Name:</th>
+        <th>Channel:</th>
+        <th>Type:</th>
+        <th>Date</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @campaigns.each_with_index do |campaign, index| %> 
+        <tr>
+          <td><%= index + 1 %></td>
+          <td class="td-campaign-names"><%= campaign.name %></td>
+          <td class="td-campaign-channels"><%= campaign.channel %></td>
+          <td class="td-campaign-types"><%= campaign.campaign_type %></td>
+          <td class="td-campaign-dates"><%= campaign.campaign_date %></td>
+          <td class="td-company-names"><%= campaign.company.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+    
+<% else %>
+  <p>
+    You don't have any leads yet!
+  </p>
+<% end %> 
