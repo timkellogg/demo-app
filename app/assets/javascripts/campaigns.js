@@ -25,7 +25,30 @@ $(document).ready(function() {
     }
   });
 
+  // Hides/Shows all of the non-unique employees
+  // TODO: combine methods so that they are DRY
   $('#unique_employees').on('click', function() {
-    
+    var currentState = this.textContent;
+
+    if (currentState === 'Unique employees') {
+      $(this).text('All employees');
+
+      var employees = $('.td-employee-name');
+      var uniqueEmployees = [];
+
+      employees.each(function() {
+        var employeeName = this.textContent;
+
+        if (uniqueEmployees.indexOf(employeeName) !== -1) {
+          $(this).parent().hide();
+        } else {
+          uniqueEmployees.push(employeeName);
+        }
+      });
+    } else {
+      $(this).text('Unique employees');
+      $('.td-company-names').parent().show();
+    }
   });
+
 });

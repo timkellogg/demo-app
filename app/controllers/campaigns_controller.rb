@@ -10,17 +10,15 @@ class CampaignsController < ApplicationController
       .order(name: :desc)
       .paginate(:page => params[:page])
   end
-  
-  # Need to make a scraper that downloads latest data to keep in sync
-  def unique_businesses
-    Campaign.uniq.pluck(:name)
-  end
-  
-  # Show individual campaign
+
   def show  
+    @campaign = Campaign.find(params[:id]);
     
+    # TODO: prevent making a second call to the db. When rails loads in the 
+    # campaign variable, it doesn't bring in the join relationship
+    @employees = Campaign.find(params[:id]).company.users
   end
-  
+
   def new
     
   end

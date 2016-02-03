@@ -6,7 +6,7 @@ def get_random_record(klass)
        .first
 end
 
-10.times do |n|
+50.times do |n|
   Company.create!(
     address: Faker::Address.street_address,
     city_id: n,
@@ -49,7 +49,28 @@ end
   )
   
   random_company = get_random_record(Company)
+  firstname = Faker::Name.first_name
+  lastname = Faker::Name.last_name
+  name = "#{firstname} #{lastname}"
   
+  user = User.new(
+    email: Faker::Internet.email,
+    password: 'password',
+    password_confirmation: 'password',
+    company_name: random_company.name,
+    country_id: 1,
+    firstname: firstname,
+    international: false,
+    invitation_id: n,
+    lastname: lastname,
+    name: name,
+    title: 'Jr.',
+    roles_mask: 2
+  )
+  
+  user.company_ids = random_company.id
+  user.save!
+
   Campaign.create!(
     company_id: random_company.id,
     name: random_company.name,
@@ -58,5 +79,7 @@ end
     campaign_date: Faker::Date.between(20.days.ago, Date.today),
     file_url: Faker::Internet.url
   )
+  
+  
 end
 
