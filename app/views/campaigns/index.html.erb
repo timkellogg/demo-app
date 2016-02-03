@@ -1,8 +1,11 @@
+<%= link_to :controller => "campaigns", :action => "sync" do %>
+  <button class="btn btn-success">Sync</button>
+<% end %>
 
 <% if @campaigns %>
+
 <h3>Sales Leads</h3>
   <button id="unique_businesses" class="btn btn-info">Unique businesses</button>
-  <button id="unique_employees" class="btn btn-info">Unique employees</button>
   <table id="campaign-table" class="table table-striped">
     <thead>
       <tr>

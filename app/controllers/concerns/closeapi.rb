@@ -2,21 +2,20 @@
 # via the close.io gem ---> https://github.com/taylorbrooks/closeio
 require 'closeio'
 
-module Closeapi < ApplicationController
+module Closeapi
   extend ActiveSupport::Concern
   
   # Connects current_user to Close.io account
   def initialize
+    super
     @client = Closeio::Client.new(ENV['CLOSE_API_KEY'])
   end
-  
-  # Retrieves unqiue companies within leads from employee
-  def find_unique_company_leads
-    @client.list_leads
-  end
-  
-  # Finds all of the unique employees for a particular company
-  def find_unique_company_employees
+    
+  # compares the opporunities listed in close.io with those listed in the database
+  def sync_opportunities
+    @local_campaigns = Campaign.all
+    @close_campaigns = @client.list_opportunities
+    
     
   end
   

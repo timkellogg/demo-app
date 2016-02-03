@@ -1,7 +1,5 @@
-require 'closeio'
-
 class CampaignsController < ApplicationController
-  # include Closeapi
+  include Closeapi
   before_action :authenticate_user!
   
   # Show all leads
@@ -17,6 +15,16 @@ class CampaignsController < ApplicationController
     # TODO: prevent making a second call to the db. When rails loads in the 
     # campaign variable, it doesn't bring in the join relationship
     @employees = Campaign.find(params[:id]).company.users
+  end
+  
+  # Compares campaign information from Close.io with local
+  def sync
+    begin
+      sync_opportunities
+    rescue => e
+      flash[:danger] = 'Something went wrong with the sync.'
+      render :index
+    end
   end
 
   def new
