@@ -23,8 +23,8 @@ class CampaignsController < ApplicationController
       sync_opportunities
     rescue => e
       flash[:danger] = 'Something went wrong with the sync.'
-      render :index
     end
+    render :index
   end
 
   def new
