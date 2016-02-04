@@ -20,7 +20,8 @@ gem "paperclip"
 gem 'dotenv-rails'
 gem 'cancancan', '~> 1.10'
 
-gem 'jquery-datatables-rails', '~> 3.3.0'
+# Handle file uploads
+gem 'roo'
 
 # Close.io
 gem 'closeio', '~> 2.4'

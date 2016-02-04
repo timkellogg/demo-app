@@ -79,7 +79,5 @@ end
     campaign_date: Faker::Date.between(20.days.ago, Date.today),
     file_url: Faker::Internet.url
   )
-  
-  
 end
 

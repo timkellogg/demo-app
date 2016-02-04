@@ -1,7 +1,13 @@
-<ul id="employee-subnav" class="nav nav-pills">
-  <li role="presentation"><a class="btn btn-default">Add a Lead</a></li>
-  <li role="presentation"><a class="btn btn-default" href="#">Leads</a></li>
-  <li role="presentation"><a class="btn btn-default" href="#">Clients</a></li>
-</ul>
-
-  
+<!-- TODO: replace with cancan ability for only user roles with permission -->
+<% if current_user %>
+  <div class="row text-center">
+    <ul id="employee-subnav" class="nav nav-pills">
+        <li role="presentation">
+          <%= link_to 'Add leads', new_campaign_path, class: 'btn btn-default' %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'Current Leads', campaigns_path, class: 'btn btn-default' %>
+        </li>
+    </ul>
+  </div>
+<% end %>

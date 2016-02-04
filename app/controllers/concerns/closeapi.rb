@@ -61,7 +61,7 @@ module Closeapi
           end
           
           rescue => e
-            Rails.logger << "Could not save #{email_address.email} from Close.io"
+            Rails.logger << "Could not save #{email_address.email} from Close.io because of #{e}"
             break
           end
         end
