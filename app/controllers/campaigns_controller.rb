@@ -1,3 +1,6 @@
+# Require gems necessary to import and manage csv formats
+require 'csv'
+
 class CampaignsController < ApplicationController
   include Closeapi
   before_action :authenticate_user!
@@ -34,6 +37,10 @@ class CampaignsController < ApplicationController
   # Allow users to upload/create new leads and persist those to Close.io
   def create  
     @campaign = Campaign.new(campaign_params)
+
+    # Handles file upload
+    # TODO: sidekiq to process in the background 
+    Campaign.import(campaign_params[:file_url])
     
     if @campaign.save
       flash[:success] = "Campaign was successfully saved"

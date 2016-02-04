@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     
   get 'static_pages/home'
   
-  resources :campaigns
+  resources :campaigns  
   
   # Sync local campaigns with those in Close.io
   get 'sync' => 'campaigns#sync'

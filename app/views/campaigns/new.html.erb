@@ -5,25 +5,27 @@
   environment. Turnaround is usually 24-48 hours. Here is an Example Data file.
 </p>
 
-<%= form_for @campaign, multipart: true do |f| %>
-  <%= render "shared/errors", object: @campaign %>
+<div class="text-center">
+  <%= form_for @campaign, multipart: true do |f| %>
+    <%= render "shared/errors", object: @campaign %>
 
-  <%= f.label :name, "Campaign Name" %><br>
-  <%= f.text_field :name %><br>
-  
-  <%= f.label :channel, "Campaign Channel" %><br>
-  <%= f.text_field :channel %><br>
-  
-  <%= f.label :campaign_type, "Campaign Type" %><br>
-  <%= f.text_field :campaign_type %><br>
-  
-  <%= f.label :campaign_date, "Campaign Date" %><br>
-  <%= f.date_field :campaign_date %><br>
+    <%= f.label :name, "Campaign Name" %><br>
+    <%= f.text_field :name %><br>
+    
+    <%= f.label :channel, "Campaign Channel" %><br>
+    <%= f.text_field :channel %><br>
+    
+    <%= f.label :campaign_type, "Campaign Type" %><br>
+    <%= f.text_field :campaign_type %><br>
+    
+    <%= f.label :campaign_date, "Campaign Date" %><br>
+    <%= f.date_field :campaign_date %><br>
 
-  <%= f.label :file_url, "Upload" %><br>
-  <%= f.file_field :file_url %><br>
-  
-  <div class="row text-right">
-    <%= f.submit %><br>
-  </div>
-<% end %>
+    <%= f.label :file_url, "Upload" %><br>
+    <%= f.file_field :file_url %><br>
+    
+    <div class="row text-center">
+      <%= f.submit %><br>
+    </div>
+  <% end %>
+</div>
