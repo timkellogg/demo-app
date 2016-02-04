@@ -9,6 +9,7 @@ class Campaign < ActiveRecord::Base
     # TODO: Method to detect file extension and parse csv,xls,libre differently
     # TODO: Fix parsing of file
     begin 
+binding.pry
       workbook = Roo::Excelx.new(file.path)
       workbook.default_sheet = workbook.sheets.first
       hash_of_campaign_attributes = ((workbook.first_row + 1)..workbook.last_row).each_with_object({}) do |row, hash|

@@ -22,12 +22,18 @@ class CampaignsController < ApplicationController
   
   # Compares campaign information from Close.io with local
   def sync
+    @old_campaing_length = Campaign.all.length
     begin
       sync_opportunities
+      @new_campaign_length = Campaign.all.length
     rescue => e
       flash[:danger] = 'Something went wrong with the sync.'
     end
-    render :index
+
+    puts "#{@old_campaing_length} is the OLD number"
+    puts "#{@new_campaign_length} is the number now"
+    
+    redirect_to campaigns_path
   end
 
   def new
@@ -40,7 +46,6 @@ class CampaignsController < ApplicationController
     
     # If the company is not already in the database, cancel the save, notify user
     begin
-      binding.pry
       company = Company.find_by_name(campaign_params[:name])
       @campaign.company_id = company.id
     rescue => e
@@ -51,7 +56,7 @@ class CampaignsController < ApplicationController
     
     # Handles file upload
     # TODO: sidekiq to process in the background 
-    # Campaign.import(campaign_params[:file_url])
+    Campaign.import(campaign_params[:file_url])
     
     if @campaign.save
       flash[:success] = "Campaign was successfully saved"

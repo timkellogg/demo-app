@@ -1,0 +1,27 @@
+<h3>Company Profile</h3>
+
+<% if @company.processed? == false %>
+  <span class="badge">Not proccessed yet</span><br><br>
+  <%= link_to 'Process company', edit_company_path(@company), class: "btn btn-xs btn-default" %>
+<% else %>
+  <span class="badge">Processed</span>
+<% end %>
+
+<table id="companies-table" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name:</th>
+      <th>Phone:</th>
+      <th>Shipping Address:</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <tr>
+      <td class="td-company-phone"><%= @company.name %></td>
+      <td class="td-company-name"><%= @company.phone %></td>
+      <td class="td-shipping-address"><%= @company.ship_address %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'All Companies', companies_path %>

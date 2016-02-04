@@ -13,20 +13,18 @@ module Closeapi
     
   # compares the opporunities listed in close.io with those listed in the database
   # TODO: improve efficiency of comparing data from sources
+  # TODO: replace with native API and remove gem wrapper
   def sync_opportunities
     @close_campaigns = @client.find_lead('').data
-    
+
     # campaigns 
     @close_campaigns.each do |close_campaign|
       # campaign contacts
       close_campaign.contacts.each do |contact|
-        
+
         # contact emails
         contact.emails.each do |email_address|
-          # split_address = email_address.email.split('@')
-          # contact = split_address.first
-          # domain = split_address.last
-          
+
           # If there's already a user with that address, skip
           return if User.find_by_email(email_address.email)
           name = contact.name.split(' ')
@@ -36,7 +34,7 @@ module Closeapi
             user = User.new(
               email: email_address.email,
               password: 'password',
-              password_confirmation: 'password_confirmation',
+              password_confirmation: 'password',
               company_name: contact.display_name,
               country_id: nil,
               name: name,
@@ -47,18 +45,27 @@ module Closeapi
             )
           
           # TODO: have to have error checks because there may be mispellings, etc.
-          company = Company.find_by_name(name)
-          
-          if company.nil?
+          found_company = Company.find_by_name(name)
+
+          if found_company.nil?
             # Create company
             Company.create!(
               processed: false, # Sets state that allows incomplete companies to be saved
               name: close_campaign.name
             )
-            
+
             user.company_ids = Company.last.id
             user.save!
           end
+
+          # Add it as a lead
+          Campaign.create!(
+            company_id: found_company.try(:id) || Company.last.id,
+            name: close_campaign.name,
+            channel: 'Other',
+            campaign_type: 'Other',
+            campaign_date: close_campaign.date_created
+          )  
           
           rescue => e
             Rails.logger << "Could not save #{email_address.email} from Close.io because of #{e}"

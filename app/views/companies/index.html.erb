@@ -1,0 +1,28 @@
+<% if @companies %>
+  <%= will_paginate @coffeeshops, renderer: BootstrapPagination::Rails %>
+
+  <table id="companies-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name:</th>
+        <th>Phone:</th>
+        <th>View:</th>
+        <th>Remove:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @companies.each_with_index do |company| %> 
+        <tr>
+          <td class="td-company-phone"><%= company.name %></td>
+          <td class="td-company-name"><%= company.phone %></td>
+          <td><%= link_to 'View listing', company %></td>
+          <td><%= link_to 'Delete', company_path(company), remote: true, data: { confirm: 'Are you sure?', method: :delete } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    There are no companies yet!
+  </p>
+<% end %>

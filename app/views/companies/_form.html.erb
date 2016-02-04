@@ -1,0 +1,78 @@
+<%= form_for @company do |f| %>
+  <%= render "shared/errors", object: @company %>
+  
+  <div class="form-group">
+    <%= f.label :name, "Company Name" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control", placeholder: "Address" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :default_tax %>
+    <%= f.text_field :default_labor_tax, class: "form-control", placeholder: 'Labor Tax' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :int_address %>
+    <%= f.text_field :int_address, class: "form-control", placeholder: 'International Address' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :int_city %>
+    <%= f.text_field :int_city, class: "form-control", placeholder: 'International City' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :int_state %>
+    <%= f.text_field :int_state, class: "form-control", placeholder: 'International State' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :int_zipcode %>
+    <%= f.text_field :int_zipcode, class: "form-control", placeholder: 'International Zipcode' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :phone %>
+    <%= f.phone_field :phone, class: "form-control", placeholder: 'Phone' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :project_terms %>
+    <%= f.text_field :project_terms, class: "form-control", placeholder: 'Project Terms' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ship_address %>
+    <%= f.text_field :ship_address, class: "form-control", placeholder: 'Shipping Address' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ship_city_name %>
+    <%= f.text_field :ship_city_name, class: "form-control", placeholder: 'Shipping City' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ship_city_state %>
+    <%= f.text_field :ship_city_state, class: "form-control", placeholder: 'Shipping State' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ship_taxes %>
+    <%= f.text_field :ship_taxes, class: "form-control", placeholder: 'Shipping State' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :processed %>
+    <%= f.check_box :processed, class: "form-control" %>
+  </div>
+  
+  <div class="row text-right">
+    <a class="btn btn-default" href="#">Cancel</a>
+    <%= f.submit 'Save', class: 'btn btn-default' %>
+  </div>
+<% end %>
