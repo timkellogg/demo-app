@@ -1,11 +1,8 @@
-# Require gems necessary to import and manage csv formats
-require 'csv'
-
 class CampaignsController < ApplicationController
   include Closeapi
   before_action :authenticate_user!
+  before_action :set_campaign, only: [:edit, :show, :update, :destroy]
   
-  # Show all leads
   def index
     @campaigns = Campaign.all
       .order(name: :asc)
@@ -13,25 +10,18 @@ class CampaignsController < ApplicationController
   end
 
   def show  
-    @campaign = Campaign.find(params[:id]);
-    
     # TODO: prevent making a second call to the db. When rails loads in the 
     # campaign variable, it doesn't bring in the join relationship
-    @employees = Campaign.find(params[:id]).company.users
+    @employees = Campaign.find(params[:id]).company.try(:users)
   end
   
   # Compares campaign information from Close.io with local
   def sync
-    @old_campaing_length = Campaign.all.length
     begin
       sync_opportunities
-      @new_campaign_length = Campaign.all.length
     rescue => e
       flash[:danger] = 'Something went wrong with the sync.'
     end
-
-    puts "#{@old_campaing_length} is the OLD number"
-    puts "#{@new_campaign_length} is the number now"
     
     redirect_to campaigns_path
   end
@@ -40,10 +30,9 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new
   end
   
-  # Allow users to upload/create new leads and persist those to Close.io
   def create  
     @campaign = Campaign.new(campaign_params)
-    
+
     # If the company is not already in the database, cancel the save, notify user
     begin
       company = Company.find_by_name(campaign_params[:name])
@@ -54,10 +43,9 @@ class CampaignsController < ApplicationController
       return
     end
     
-    # Handles file upload
     # TODO: sidekiq to process in the background 
     Campaign.import(campaign_params[:file_url])
-    
+
     if @campaign.save
       flash[:success] = "Campaign was successfully saved"
       redirect_to campaigns_path
@@ -68,7 +56,6 @@ class CampaignsController < ApplicationController
   end
   
   def edit
-    
   end
   
   def update
@@ -80,7 +67,7 @@ class CampaignsController < ApplicationController
   private
   
     def set_campaign
-      
+      @campaign = Campaign.find(params[:id])
     end
     
     def campaign_params

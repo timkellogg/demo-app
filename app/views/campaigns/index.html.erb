@@ -26,7 +26,7 @@
           <td class="td-campaign-channels"><%= campaign.channel %></td>
           <td class="td-campaign-types"><%= campaign.campaign_type %></td>
           <td class="td-campaign-dates"><%= campaign.campaign_date %></td>
-          <td class="td-company-names"><%= campaign.company.name %></td>
+          <td class="td-company-names"><%= campaign.company.try(:name) %></td>
           <td><%= link_to 'View listing', campaign %></td>
         </tr>
       <% end %>

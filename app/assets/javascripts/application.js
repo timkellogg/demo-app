@@ -20,5 +20,7 @@
 
 $(document).ready(function() {
   // initializes the datepicker plugin for forms
-  $('.datepicker').datepicker();
+  $('.datepicker').datepicker({
+    dateFormat: 'dd/mm/yy'
+  });
 });
