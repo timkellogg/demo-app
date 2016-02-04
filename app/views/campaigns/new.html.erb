@@ -1,31 +1,42 @@
-<h2>Upload your clients</h2>
 
-<p>
-  Upload your custom client data here. We will format it and set this up in your Jetbuilt
-  environment. Turnaround is usually 24-48 hours. Here is an Example Data file.
-</p>
-
-<div class="text-center">
+<div class="col-md-6 col-md-offset-3">
+  <h4 class="text-left">Upload your clients</h2><br>
+  
+  <p>
+    Upload your custom client data here. We will format it and set this up in your Jetbuilt
+    environment. Turnaround is usually 24-48 hours. Here is an <a href="#">Example Data</a> file.
+  </p>
   <%= form_for @campaign, multipart: true do |f| %>
     <%= render "shared/errors", object: @campaign %>
 
-    <%= f.label :name, "Campaign Name" %><br>
-    <%= f.text_field :name %><br>
+    <div class="form-group">
+      <%= f.label :name, "Campaign Name" %>
+      <%= f.text_field :name, class: "form-control", placeholder: 'Name' %>
+    </div>
     
-    <%= f.label :channel, "Campaign Channel" %><br>
-    <%= f.text_field :channel %><br>
+    <div class="form-group">
+      <%= f.label :channel, "Campaign Channel" %>
+      <%= f.select(:channel, options_for_select(get_channels), {}, { class: "form-control"}) %>
+    </div>
+      
+    <div class="form-group">
+      <%= f.label :campaign_type %>
+      <%= f.select(:campaign_type, options_for_select(get_campaign_types), {}, { class: "form-control" }) %>
+    </div>
     
-    <%= f.label :campaign_type, "Campaign Type" %><br>
-    <%= f.text_field :campaign_type %><br>
-    
-    <%= f.label :campaign_date, "Campaign Date" %><br>
-    <%= f.date_field :campaign_date %><br>
+    <div class="form-group">
+      <%= f.label :campaign_date %>
+      <%= f.text_field :campaign_date, class: "form-control datepicker", placeholder: 'Date' %>
+    </div>
 
-    <%= f.label :file_url, "Upload" %><br>
-    <%= f.file_field :file_url %><br>
+    <div class="form-group">
+      <%= f.label :file_url, "Upload" %>
+      <%= f.file_field :file_url, class: "form-control" %>
+    </div>
     
-    <div class="row text-center">
-      <%= f.submit %><br>
+    <div class="row text-right">
+      <a class="btn btn-default" href="#">Cancel</a>
+      <%= f.submit 'Create client list', class: 'btn btn-default' %>
     </div>
   <% end %>
 </div>

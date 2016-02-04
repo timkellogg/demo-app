@@ -23,8 +23,14 @@ gem 'cancancan', '~> 1.10'
 # Handle file uploads
 gem 'roo'
 
+# Bail out turbolinks
+gem 'jquery-turbolinks'
+
 # Close.io
 gem 'closeio', '~> 2.4'
+
+# jquery ui (datepicker)
+gem 'jquery-ui-rails'
 
 group :production do
   gem 'puma'

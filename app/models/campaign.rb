@@ -31,8 +31,7 @@ class Campaign < ActiveRecord::Base
   # validate uniquess of join on campaign and company
   # validates_uniqueness_of :company_id, :scope => [:company_id]
   
-  validates_presence_of :company_id,
-                        :name,
+  validates_presence_of :name,
                         :channel,
                         :campaign_type,
                         :campaign_date

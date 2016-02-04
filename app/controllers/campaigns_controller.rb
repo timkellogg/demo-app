@@ -8,7 +8,7 @@ class CampaignsController < ApplicationController
   # Show all leads
   def index
     @campaigns = Campaign.all
-      .order(name: :desc)
+      .order(name: :asc)
       .paginate(:page => params[:page])
   end
 
@@ -37,15 +37,27 @@ class CampaignsController < ApplicationController
   # Allow users to upload/create new leads and persist those to Close.io
   def create  
     @campaign = Campaign.new(campaign_params)
-
+    
+    # If the company is not already in the database, cancel the save, notify user
+    begin
+      binding.pry
+      company = Company.find_by_name(campaign_params[:name])
+      @campaign.company_id = company.id
+    rescue => e
+      flash[:danger] = "There is no company named #{campaign_params[:name]}!"
+      redirect_to new_campaign_path
+      return
+    end
+    
     # Handles file upload
     # TODO: sidekiq to process in the background 
-    Campaign.import(campaign_params[:file_url])
+    # Campaign.import(campaign_params[:file_url])
     
     if @campaign.save
       flash[:success] = "Campaign was successfully saved"
       redirect_to campaigns_path
     else 
+      flash[:danger]
       render :new
     end
   end

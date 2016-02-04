@@ -6,10 +6,12 @@
 
 <h3>Sales Leads</h3>
   <button id="unique_businesses" class="btn btn-info">Unique businesses</button>
+  
+  <%= will_paginate @coffeeshops, renderer: BootstrapPagination::Rails %>
+  
   <table id="campaign-table" class="table table-striped">
     <thead>
       <tr>
-        <th>Number:</th>
         <th>Name:</th>
         <th>Channel:</th>
         <th>Type:</th>
@@ -18,9 +20,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @campaigns.each_with_index do |campaign, index| %> 
+      <% @campaigns.each_with_index do |campaign| %> 
         <tr>
-          <td><%= index + 1 %></td>
           <td class="td-campaign-names"><%= campaign.name %></td>
           <td class="td-campaign-channels"><%= campaign.channel %></td>
           <td class="td-campaign-types"><%= campaign.campaign_type %></td>
