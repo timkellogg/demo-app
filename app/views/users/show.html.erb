@@ -1,0 +1,9 @@
+<h2 class="text-center"><%= @user.lastname %>, <%= @user.firstname %></h2>
+
+<div class="row text-center">
+  <div class="btn-group">
+    <%= link_to user_clients_path(@user) do %>
+      <button class="btn btn-lg btn-primary" type="button" name="button">Your Clients</button>
+    <% end %>
+  </div>
+</div>

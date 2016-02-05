@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   
   resources :campaigns  
   resources :companies
+  resources :clients
+  
+  resources :users, :only => [:show] do
+    resources :clients
+  end
+  
   
   # Sync local campaigns with those in Close.io
   get 'sync' => 'campaigns#sync'

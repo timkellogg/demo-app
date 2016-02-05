@@ -1,0 +1,27 @@
+<% if @client.try(:any?) %>
+  <table id="clients-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Last Name:</th>
+        <th>First Name:</th>
+        <th>Phone:</th>
+        <th>View:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-client-lastname"><%= @client.last_name %></td>
+        <td class="td-client-firstname"><%= @client.first_name %></td>
+        <td class="td-client-phone"><%= @client.phone %></td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    You don't have any clients yet!
+  </p>
+<% end %>
+
+<%= link_to 'Add clients from CSV file upload', new_campaign_path, class: 'btn btn-default' %>
+
+<%= link_to 'Add clients manually', new_user_client_path, class: 'btn btn-default' %>

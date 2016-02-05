@@ -1,0 +1,77 @@
+<%= form_for @client do |f| %>
+  <%= render "shared/errors", object: @client %>
+  
+  <div class="form-group">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name, class: "form-control", placeholder: "Company Name"%>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, class: "form-control", placeholder: "Phone" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :contact_email %>
+    <%= f.email_field :contact_email, class: "form-control", placeholder: "Email" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+  </div>  
+  
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :int_address %>
+      <%= f.text_field :int_address, class: "form-control", placeholder: "123 Main Street" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :int_city %>
+      <%= f.text_field :int_city, class: "form-control", placeholder: "City" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :int_state %>
+      <%= f.text_field :int_state, class: "form-control", placeholder: "State" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :int_zipcode %>
+      <%= f.text_field :int_zipcode, class: "form-control", placeholder: "Zip" %>
+    </div>
+  </fieldset>
+  
+  <div class="form-group">
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address, class: "form-control", placeholder: "US Street" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :tax %>
+    <%= f.number_field :tax, class: "form-control", placeholder: "Tax Rate" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :zipcode %>
+    <%= f.number_field :zipcode, class: "form-control", placeholder: "US Zip" %>
+  </div>
+  
+  
+  <div class="row text-right">
+    <a class="btn btn-default" href="#">Cancel</a>
+    <%= f.submit 'Save', class: 'btn btn-default' %>
+  </div>
+
+<% end %>

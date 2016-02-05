@@ -1,0 +1,34 @@
+<% if @clients.try(:any?) %>
+  <%= will_paginate @clients, renderer: BootstrapPagination::Rails %>
+  <button id="unique_businesses" class="btn btn-info">Unique businesses</button>
+
+  <table id="clients-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Last Name:</th>
+        <th>First Name:</th>
+        <th>Phone:</th>
+        <th>View:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %> 
+        <tr>
+          <td class="td-client-lastname"><%= client.last_name %></td>
+          <td class="td-client-firstname"><%= client.first_name %></td>
+          <td class="td-client-phone"><%= client.phone %></td>
+          <td><%= link_to 'View listing', client %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    You don't have any clients yet!
+  </p>
+<% end %>
+
+<%= link_to 'Add clients from CSV file upload', new_campaign_path, class: 'btn btn-default' %>
+
+<%= link_to 'Add clients manually', new_user_client_path, class: 'btn btn-default' %>
