@@ -1,7 +1,7 @@
 <h3>Company Profile</h3>
 
 <% if @company.processed? == false %>
-  <span class="badge">Not proccessed yet</span><br><br>
+  <span class="badge">Not proccessed yet</span>*<br><br>
   <%= link_to 'Process company', edit_company_path(@company), class: "btn btn-xs btn-default" %>
 <% else %>
   <span class="badge">Processed</span>
@@ -23,5 +23,11 @@
     </tr>
   </tbody>
 </table>
+
+<p>
+  <b>*</b> A non-processed company is one that is not completely finished and was imported
+  from Close.io which doesn't have all of the information. You can fill in this 
+  information and then mark the company as processed.
+</p>
 
 <%= link_to 'All Companies', companies_path %>

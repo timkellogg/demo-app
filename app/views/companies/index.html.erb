@@ -1,9 +1,13 @@
 <% if @companies %>
+  <button id="hide_processed" class="btn btn-default">Hide processed</button><br><br>
+  <button id="hide_unprocessed" class="btn btn-default">Hide unprocessed</button><br>
+  
   <%= will_paginate @coffeeshops, renderer: BootstrapPagination::Rails %>
 
   <table id="companies-table" class="table table-striped">
     <thead>
       <tr>
+        <th>Processed</th>
         <th>Name:</th>
         <th>Phone:</th>
         <th>View:</th>
@@ -13,6 +17,7 @@
     <tbody>
       <% @companies.each_with_index do |company| %> 
         <tr>
+          <td class="td-company-processed"><%= friendly_bool(company.processed?) %></td>
           <td class="td-company-phone"><%= company.name %></td>
           <td class="td-company-name"><%= company.phone %></td>
           <td><%= link_to 'View listing', company %></td>

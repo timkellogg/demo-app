@@ -6,6 +6,21 @@ def get_random_record(klass)
        .first
 end
 
+User.create!(
+  email: 'user@gmail.com',
+  password: 'password',
+  password_confirmation: 'password',
+  company_name: 'Company',
+  country_id: 1,
+  firstname: 'admin',
+  international: false,
+  invitation_id: 1,
+  lastname: 'user',
+  name: 'admin user',
+  title: 'jr',
+  roles_mask: 2
+)
+
 50.times do |n|
   Company.create!(
     address: Faker::Address.street_address,
@@ -25,7 +40,7 @@ end
     int_state: Faker::Address.state,
     int_zipcode: Faker::Address.zip_code,
     intcurrency_id: n,
-    name: Faker::Name.name,
+    name: Faker::Company.name,
     phone: Faker::PhoneNumber.cell_phone,
     po_custom_id: n,
     po_custom_prefix: n,
