@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  
   // Hides/Shows all of the non-unique businesses
   $('#unique_businesses').on('click', function() {
     var currentState = this.textContent;
@@ -50,5 +50,14 @@ $(document).ready(function() {
       $('.td-company-names').parent().show();
     }
   });
-
+  
+  // custom options for campaign channel
+  $('#campaign_channel').on('change', function() {
+    
+    if ( $('#campaign_channel').val() === 'Other' ) {
+      $('#custom-channel-wrapper').removeClass('hidden');
+    } else if ( $('#campaign_channel').val() !== 'Other' ) {
+      $('#custom-channel-wrapper').addClass('hidden');
+    }
+  });
 });

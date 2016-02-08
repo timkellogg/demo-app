@@ -20,9 +20,6 @@ gem "paperclip"
 gem 'dotenv-rails'
 gem 'cancancan', '~> 1.10'
 
-# Handle file uploads
-gem 'roo'
-
 # Bail out turbolinks
 gem 'jquery-turbolinks'
 
