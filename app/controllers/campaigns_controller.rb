@@ -32,19 +32,17 @@ class CampaignsController < ApplicationController
   
   def create  
     @campaign = Campaign.new(campaign_params)
-
-    # If the company is not already in the database, cancel the save, notify user
+    
+    # TODO: when the company is pulled from the spreadsheet, that makes the assumption that there is only one company on the sheet and the first one is the reference 
+    # TODO: doesn't handle nil values for company name yet. Company name should be written out or the company will be off by one. 
     begin
-      company = Company.find_by_name(campaign_params[:name])
-      @campaign.company_id = company.id
+      Campaign.import(campaign_params[:file_url])
+      @campaign.company_id = Client.last.company.id  
     rescue => e
-      flash[:danger] = "There is no company named #{campaign_params[:name]}!"
-      redirect_to new_campaign_path
+      flash[:danger] = "Something went wrong with the file upload. Please make sure everything is filled in like the example format. Also, make sure that the company exists that you are trying to add clients to."
+      render :new
       return
     end
-    
-    # TODO: sidekiq to process in the background 
-    Campaign.import(campaign_params[:file_url])
 
     if @campaign.save
       flash[:success] = "Campaign was successfully saved"
