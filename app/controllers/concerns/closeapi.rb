@@ -19,6 +19,7 @@ module Closeapi
 
     # campaigns 
     @close_campaigns.each do |close_campaign|
+      
       # campaign contacts
       close_campaign.contacts.each do |contact|
 
@@ -44,28 +45,28 @@ module Closeapi
               roles_mask: 2
             )
           
-          # TODO: have to have error checks because there may be mispellings, etc.
-          found_company = Company.find_by_name(name)
+            # TODO: have to have error checks because there may be mispellings, etc.
+            found_company = Company.find_by_name(name)
 
-          if found_company.nil?
-            # Create company
-            Company.create!(
-              processed: false, # Sets state that allows incomplete companies to be saved
-              name: close_campaign.name
+            if found_company.nil?
+              # Create company
+              Company.create!(
+                processed: false, # Sets state that allows incomplete companies to be saved
+                name: close_campaign.name
+              )
+
+              user.company_ids = Company.last.id
+              user.save!
+            end
+
+            # Add it as a lead
+            Campaign.create!(
+              company_id: found_company.try(:id) || Company.last.id,
+              name: close_campaign.name,
+              channel: 'Other',
+              campaign_type: 'Other',
+              campaign_date: close_campaign.date_created
             )
-
-            user.company_ids = Company.last.id
-            user.save!
-          end
-
-          # Add it as a lead
-          Campaign.create!(
-            company_id: found_company.try(:id) || Company.last.id,
-            name: close_campaign.name,
-            channel: 'Other',
-            campaign_type: 'Other',
-            campaign_date: close_campaign.date_created
-          )  
           
           rescue => e
             Rails.logger << "Could not save #{email_address.email} from Close.io because of #{e}"

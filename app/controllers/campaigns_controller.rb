@@ -32,7 +32,6 @@ class CampaignsController < ApplicationController
   
   def create  
     @campaign = Campaign.new(campaign_params)
-binding.pry
     # TODO: when the company is pulled from the spreadsheet, that makes the assumption that there is only one company on the sheet and the first one is the reference 
     # TODO: doesn't handle nil values for company name yet. Company name should be written out or the company will be off by one. 
     begin

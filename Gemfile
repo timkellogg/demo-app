@@ -20,7 +20,6 @@ gem "paperclip"
 gem 'dotenv-rails'
 gem 'cancancan', '~> 1.10'
 
-
 gem 'roo'
 
 # Bail out turbolinks
