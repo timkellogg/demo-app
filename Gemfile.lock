@@ -44,6 +44,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    american_date (1.1.1)
     arel (6.0.3)
     autoprefixer-rails (6.3.1)
       execjs
@@ -296,6 +297,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  american_date
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   better_errors

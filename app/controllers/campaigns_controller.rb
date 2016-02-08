@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   include Closeapi
   before_action :authenticate_user!
   before_action :set_campaign, only: [:edit, :show, :update, :destroy]
-  
+
   def index
     @campaigns = Campaign.all
       .order(name: :asc)
@@ -43,7 +43,9 @@ class CampaignsController < ApplicationController
       render :new
       return
     end
-
+    
+    convert_date(campaign_params[:campaign_date])
+  
     if @campaign.save
       flash[:success] = "Campaign was successfully saved"
       redirect_to campaigns_path
@@ -70,5 +72,10 @@ class CampaignsController < ApplicationController
     
     def campaign_params
       params.require(:campaign).permit(:company_id, :name, :channel, :campaign_type, :campaign_date, :file_url)
+    end
+    
+    # jQuery datepicker sends date in American format but Ruby expects it to be in European format
+    def convert_date(date)
+      campaign_params[:campaign_date] = Date.parse(date)
     end
 end

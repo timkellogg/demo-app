@@ -32,6 +32,9 @@ gem 'closeio', '~> 2.4'
 # jquery ui (datepicker)
 gem 'jquery-ui-rails'
 
+# Ruby doesn't like freedom
+gem 'american_date'
+
 group :production do
   gem 'puma'
   gem 'rails_12factor'
