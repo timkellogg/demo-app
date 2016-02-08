@@ -20,4 +20,15 @@ module CampaignsHelper
       [ 'Other' ]
     ]
   end
+  
+  # Returns the customer types
+  def get_customer_types
+    [
+      [ 'Integrator' ],
+      [ 'Distributor ' ],
+      [ 'Enterprise' ],
+      [ 'Sales Rep' ],
+      [ 'Manufacturer' ]
+    ]
+  end
 end
