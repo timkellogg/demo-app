@@ -53,11 +53,19 @@ $(document).ready(function() {
   
   // custom options for campaign channel
   $('#campaign_channel').on('change', function() {
-    
     if ( $('#campaign_channel').val() === 'Other' ) {
       $('#custom-channel-wrapper').removeClass('hidden');
     } else if ( $('#campaign_channel').val() !== 'Other' ) {
       $('#custom-channel-wrapper').addClass('hidden');
+    }
+  });
+  
+  // custom options for campaign type
+  $('#campaign_campaign_type').on('change', function() {
+    if ( $('#campaign_campaign_type').val() === 'Other' ) {
+      $('#custom-campaign-wrapper').removeClass('hidden');
+    } else if ( $('#campaign_campaign_type').val() !== 'Other' ) {
+      $('#custom-campaign-wrapper').addClass('hidden');
     }
   });
 });

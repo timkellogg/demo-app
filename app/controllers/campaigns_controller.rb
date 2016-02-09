@@ -70,7 +70,7 @@ class CampaignsController < ApplicationController
     end
     
     def campaign_params
-      params.require(:campaign).permit(:company_id, :name, :channel, :campaign_type, :campaign_date, :file_url, :channel_details, :customer_type)
+      params.require(:campaign).permit(:company_id, :name, :channel, :campaign_type, :campaign_date, :file_url, :channel_details, :customer_type, :campaign_type_details)
     end
     
     # jQuery datepicker sends date in American format but Ruby expects it to be in European format
