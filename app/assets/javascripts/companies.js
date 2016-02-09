@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  // <button id="hide_processed" class="btn btn-info">Hide processed</button><br>
-  // <button id="hide_unprocessed" class="btn btn-info">Hide unprocessed</button><br>
   $('#hide_unprocessed').on('click', function() {
     var currentState = this.textContent;
     var companies = $('.td-company-processed');
