@@ -41,8 +41,8 @@ class Campaign < ActiveRecord::Base
         client_attributes["title"] = client_attributes["TITLE"]
         client_attributes.delete("TITLE")
 
-        company = Company.find_by_name(client_attributes["company_name"])
-
+        company = Company.find_by_name(client_attributes["company_name"].strip)
+        
         raise StandardError if company.nil?
         client_attributes["company_id"] = company.id
         
