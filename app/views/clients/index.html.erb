@@ -1,3 +1,7 @@
+<div class="text-center row header">
+  <h2>Clients</h2>
+</div>
+
 <% if @clients.try(:any?) %>
   <%= will_paginate @clients, renderer: BootstrapPagination::Rails %>
   <button id="unique_businesses" class="btn btn-info">Unique businesses</button>
