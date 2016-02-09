@@ -1,11 +1,11 @@
 <%= link_to :controller => "campaigns", :action => "sync" do %>
-  <button class="btn btn-success">Sync</button>
+  <button class="btn btn-default">Sync</button>
 <% end %>
 
 <% if @campaigns %>
 
 <h3>All Sales Leads</h3>
-  <button id="unique_businesses" class="btn btn-info">Unique businesses</button>
+  <button id="unique_businesses" class="btn btn-default">Unique businesses</button>
   
   <%= will_paginate @coffeeshops, renderer: BootstrapPagination::Rails %>
   
@@ -34,7 +34,5 @@
   </table>
     
 <% else %>
-  <p>
-    You don't have any leads yet!
-  </p>
+  <p>You don't have any leads yet!</p>
 <% end %> 

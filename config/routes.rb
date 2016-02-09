@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   resources :companies
   resources :clients
   
-  resources :users, :only => [:show] do
-    resources :clients
-  end
+  # resources :users, :only => [:show] do
+  #   resources :clients
+  # end
   
   
   # Sync local campaigns with those in Close.io

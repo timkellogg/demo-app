@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
     
     if @client.save
       flash[:success] = 'Client as successfully added'
-      redirect_to @client
+      redirect_to clients_path
     else
       render 'new'
     end

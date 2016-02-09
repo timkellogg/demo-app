@@ -4,7 +4,6 @@
 
 <% if @clients.try(:any?) %>
   <%= will_paginate @clients, renderer: BootstrapPagination::Rails %>
-  <button id="unique_businesses" class="btn btn-info">Unique businesses</button>
 
   <table id="clients-table" class="table table-striped">
     <thead>
@@ -35,4 +34,4 @@
 
 <%= link_to 'Add clients from CSV file upload', new_campaign_path, class: 'btn btn-default' %>
 
-<%= link_to 'Add clients manually', new_user_client_path, class: 'btn btn-default' %>
+<%= link_to 'Add clients manually', new_client_path, class: 'btn btn-default' %>
