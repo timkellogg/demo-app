@@ -3,8 +3,8 @@
 </div>
 
 <% if @companies %>
-  <button id="hide_processed" class="btn btn-default">Hide processed</button><br><br>
-  <button id="hide_unprocessed" class="btn btn-default">Hide unprocessed</button><br>
+  <button id="hide_processed" class="btn btn-default">Hide processed</button>
+  <button id="hide_unprocessed" class="btn btn-default">Hide unprocessed</button>
   
   <%= will_paginate @coffeeshops, renderer: BootstrapPagination::Rails %>
 
