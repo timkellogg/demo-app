@@ -12,6 +12,9 @@
       <th>Type:</th>
       <th>Date</th>
       <th>Company</th>
+      <th>Channel Details</th>
+      <th>Customer Type</th>
+      <th>Campaign Type Details</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +24,9 @@
       <td class="td-campaign-types"><%= @campaign.campaign_type %></td>
       <td class="td-campaign-dates"><%= @campaign.campaign_date %></td>
       <td class="td-company-names"><%= @campaign.company.try(:name) %></td>
+      <td class="td-campaign-channel-details"><%= @campaign.channel_details %></td>
+      <td class="td-campaign-customer-type"><%= @campaign.customer_type %></td>
+      <td class="td-campaign-campaign-details"><%= @campaign.campaign_type_details %></td>
     </tr>
   </tbody>
 </table>
